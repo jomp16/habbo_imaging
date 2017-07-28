@@ -73,14 +73,11 @@ class GroupBadge(
                 val data = getParts(it, true)
 
                 if (data[0].toInt() == 0) return@forEach
-
                 val symbolData = badgeSymbols.find { it.first == data[0].toInt() }!!
                 val image = ImageIO.read(javaClass.classLoader.getResourceAsStream("symbol/badgepart_${File(symbolData.second).nameWithoutExtension}.png"))
 
                 if (data[1].isNotEmpty()) colorize(image, Color.decode("#${data[1]}"))
-
                 val position = if (data[2].isNotEmpty()) data[2].toInt() else 0
-
                 var x = 0
                 var y = 0
 
@@ -126,7 +123,6 @@ class GroupBadge(
         (0..image.width - 1).forEach { x ->
             (0..image.height - 1).forEach { y ->
                 val color1 = Color(image.getRGB(x, y), true)
-
                 val grayscale = ((color1.red + color1.green + color1.blue).toDouble() / 3) / 0xFF
 
                 image.setRGB(x, y, Color((grayscale * color.red).toInt(), (grayscale * color.green).toInt(), (grayscale * color.blue).toInt(), color1.alpha).rgb)
@@ -136,12 +132,10 @@ class GroupBadge(
 
     private fun getParts(code: String, isSymbol: Boolean): List<String> {
         val tmp = if (isSymbol) badgeSymbols else badgeBases
-
         val partKey = StringBuilder()
 
         if (code.startsWith('0')) partKey.append('0').append(tmp.map { it.first }.filter { it < 10 }.find { code.startsWith("0$it") } ?: "0")
         else partKey.append(tmp.map { it.first }.filter { it > 10 }.find { code.startsWith("$it") } ?: "0")
-
         val partColor = code.substring(partKey.length, if (isSymbol) code.length - 1 else code.length)
         val partPos = if (isSymbol) code.substring(code.length - 1) else "0"
         val color = (if (isSymbol) badgeSymbolColors.find { it.first == partColor.toInt() }?.second else badgeBaseColors.find { it.first == partColor.toInt() }?.second) ?: ""
