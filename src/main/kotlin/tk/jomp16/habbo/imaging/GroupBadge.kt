@@ -120,8 +120,8 @@ class GroupBadge(
     }
 
     private fun colorize(image: BufferedImage, color: Color) {
-        (0..image.width - 1).forEach { x ->
-            (0..image.height - 1).forEach { y ->
+        (0 until image.width).forEach { x ->
+            (0 until image.height).forEach { y ->
                 val color1 = Color(image.getRGB(x, y), true)
                 val grayscale = ((color1.red + color1.green + color1.blue).toDouble() / 3) / 0xFF
 
