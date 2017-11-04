@@ -1,20 +1,20 @@
 /*
  * Copyright (C) 2015-2017 jomp16
  *
- * This file is part of habbo_r63b_v2.
+ * This file is part of habbo_imaging.
  *
- * habbo_r63b_v2 is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
+ * habbo_imaging is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * habbo_r63b_v2 is distributed in the hope that it will be useful,
+ * habbo_imaging is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
+ * GNU Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with habbo_r63b_v2. If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with habbo_imaging. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package tk.jomp16.habbo.imaging
@@ -43,7 +43,6 @@ class GroupBadge(
     fun getGroupBadge(badgeCode: String): BufferedImage {
         val badgeImage = BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB)
         val graphics = badgeImage.createGraphics()
-
         // Anti Aliasing
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC)
