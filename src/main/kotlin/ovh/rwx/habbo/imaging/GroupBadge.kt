@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015-2017 jomp16
+ * Copyright (C) 2015-2017 jomp16 <root@rwx.ovh>
  *
  * This file is part of habbo_imaging.
  *
@@ -17,7 +17,7 @@
  * along with habbo_imaging. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package tk.jomp16.habbo.imaging
+package ovh.rwx.habbo.imaging
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
