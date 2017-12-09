@@ -30,8 +30,7 @@ import javax.imageio.ImageIO
 class GroupBadge(
         private val badgeBases: Collection<Triple<Int, String, String>>,
         private val badgeBaseColors: Collection<Pair<Int, String>>,
-        private val badgeSymbols: Collection<Triple<Int, String, String>>,
-        private val badgeSymbolColors: Collection<Pair<Int, String>>
+        private val badgeSymbols: Collection<Triple<Int, String, String>>
 ) {
     private val log: Logger = LoggerFactory.getLogger(javaClass)
 
@@ -137,7 +136,7 @@ class GroupBadge(
         else partKey.append(tmp.map { it.first }.filter { it > 10 }.find { code.startsWith("$it") } ?: "0")
         val partColor = code.substring(partKey.length, if (isSymbol) code.length - 1 else code.length)
         val partPos = if (isSymbol) code.substring(code.length - 1) else "0"
-        val color = (if (isSymbol) badgeSymbolColors.find { it.first == partColor.toInt() }?.second else badgeBaseColors.find { it.first == partColor.toInt() }?.second) ?: ""
+        val color = (badgeBaseColors.find { it.first == partColor.toInt() }?.second) ?: ""
 
         return listOf(partKey.toString(), color, partPos)
     }
